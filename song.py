@@ -280,5 +280,5 @@ async def 스킵(ctx):
         await ctx.send("목록에 노래가 2개 이상 없다. 중단 명령어를 사용해줘.")
         
 access_token = os.environ["BOT_TOKEN"]
-bot.run('OTkxNjIzMzQ5OTMzNDQ1MTQw.G83VK8.6UWlcjS8F5dXqJQNPgBs3NAisl4c922ohnw8gA')
+bot.run(access_token)
 
