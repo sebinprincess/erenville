@@ -27,7 +27,7 @@ def title(msg):
     options = webdriver.ChromeOptions()
     options.add_argument("headless")
 
-    chromedriver_dir = r"E:\크롬드라이버\chromedriver.exe"
+    driver = load_chrome_driver()
     driver = webdriver.Chrome(chromedriver_dir, options=options)
     driver.get("https://www.youtube.com/results?search_query=" + msg + "+lyrics")
     source = driver.page_source
@@ -81,6 +81,21 @@ async def on_ready():
     print(bot.user.name)
     print('connection was succesful')
     await bot.change_presence(status=discord.Status.online, activity=None)
+    
+    if not discord.opus.is_loaded()
+        discord.opus.load_opus('opus')
+        
+def load_chrome_driver():
+      
+    options = webdriver.ChromeOptions()
+
+    options.binary_location = os.getenv('GOOGLE_CHROME_BIN')
+
+    options.add_argument('--headless')
+    # options.add_argument('--disable-gpu')
+    options.add_argument('--no-sandbox')
+
+    return webdriver.Chrome(executable_path=str(os.environ.get('CHROME_EXECUTABLE_PATH')), chrome_options=options)
 
 
 @bot.command()
@@ -167,7 +182,7 @@ async def 재생(ctx, *, msg):
         FFMPEG_OPTIONS = {'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5',
                           'options': '-vn'}
 
-        chromedriver_dir = r"E:\크롬드라이버\chromedriver.exe"
+        driver = load_chrome_driver()
         driver = webdriver.Chrome(chromedriver_dir, options = options)
         driver.get("https://www.youtube.com/results?search_query=" + msg)
         source = driver.page_source
